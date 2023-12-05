@@ -38,3 +38,17 @@ const increment = (e: Event) => {
 // }
 
 compteur?.addEventListener('click', increment)
+
+
+//Alias and Generic
+function identity<ArgType>(arg: ArgType): ArgType {
+    return arg;
+}
+
+const aa = identity(3);
+
+function first<Type>(arg:Type[]):Type {
+    return arg[0]  
+}
+
+const aaa = first(["aze","bze","cze"]);
