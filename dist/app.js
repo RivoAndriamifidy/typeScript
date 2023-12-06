@@ -41,3 +41,8 @@ function first(arg) {
     return arg[0];
 }
 const aaa = first(["aze", "bze", "cze"]);
+function consoleSize(arg) {
+    console.log(arg.length);
+    return arg;
+}
+const abb = consoleSize(['3', 2]);

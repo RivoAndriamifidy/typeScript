@@ -52,3 +52,9 @@ function first<Type>(arg:Type[]):Type {
 }
 
 const aaa = first(["aze","bze","cze"]);
+
+function consoleSize<Type extends {length: number}>(arg: Type):Type {
+    console.log(arg.length)
+    return arg    
+}
+const abb = consoleSize(['3',2])
