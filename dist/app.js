@@ -1,16 +1,11 @@
 "use strict";
-var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
-};
-var _A_a;
-const compteur = document.querySelector('#compteur');
+var _a, _Geometry_origin;
+const compteur = document.querySelector("#compteur");
 let i = 0;
 const increment = (e) => {
     e.preventDefault();
     i++;
-    const span = compteur === null || compteur === void 0 ? void 0 : compteur.querySelector('span');
+    const span = compteur === null || compteur === void 0 ? void 0 : compteur.querySelector("span");
     if (span) {
         span.innerText = i.toString();
     }
@@ -30,14 +25,14 @@ const increment = (e) => {
 //     return
 // }
 // function isDate(a: any): a is Date {
-//     return a instanceof Date    
+//     return a instanceof Date
 // }
 // function exemple2(a: Date | HTMLInputElement) {
 //     if (isDate(a)) {
 //         a
-//     }    
+//     }
 // }
-compteur === null || compteur === void 0 ? void 0 : compteur.addEventListener('click', increment);
+compteur === null || compteur === void 0 ? void 0 : compteur.addEventListener("click", increment);
 //Alias and Generic
 function identity(arg) {
     return arg;
@@ -51,55 +46,95 @@ function consoleSize(arg) {
     console.log(arg.length);
     return arg;
 }
-const abb = consoleSize(['3', 2]);
+const abb = consoleSize(["3", 2]);
 //readonly
-function reverse(arr) {
-    return [...arr].reverse();
-}
-class A {
-    constructor() {
-        _A_a.set(this, 3
-        // protected b = 3
-        // public c = 3
-        );
-    }
-    // protected b = 3
-    // public c = 3
-    log() {
-        console.log(__classPrivateFieldGet(this, _A_a, "f"));
-    }
-}
-_A_a = new WeakMap();
-// class B extends A {
+// function reverse<T>(arr:readonly T[]):T[] {
+//     return [...arr].reverse();
+// }
+// class A {
+//     #a = 3
+//     // protected b = 3
+//     // public c = 3
 //     log() {
-//         console.log(this.b)
+//         console.log(this.#a)
 //     }
 // }
-const aInstance = new A();
-aInstance.log();
-console.log(aInstance);
-class Collection {
-    constructor(items) {
-        this.items = items;
-    }
-    add(item) {
-        this.items.push(item);
-        return this;
-    }
-    // add (item: T): this{
-    //     this.items.push(item)
-    //     return this
+// // class B extends A {
+// //     log() {
+// //         console.log(this.b)
+// //     }
+// // }
+// const aInstance = new A();
+// aInstance.log()
+// console.log(aInstance)
+// class Collection <T> {
+//     constructor(private items: T[]) {
+//     }
+//     add (item: T): this{
+//         this.items.push(item)
+//         return this
+//     }
+//     // add (item: T): this{
+//     //     this.items.push(item)
+//     //     return this
+//     // }
+//     first (): T | null {
+//         return this.items[0] || null
+//     }
+//     isEqual(a: this){
+//         return a.items === this.items
+//     }
+// }
+// const a = new Collection(["aze",2])
+// //const c = a.add(3)
+// const b = a.first
+// const c = new Collection([1,2])
+// a.isEqual(c)
+// class Point {
+//   x = 0;
+//   y = 0;
+// }
+// class Geometry {
+//   x = 0;
+//   y = 0;
+//   surface = 0;
+// }
+// function getX(p: Point) {
+//   return p.x
+// }
+// getX(new Geometry())
+//abstract
+// abstract class Geometry {
+//   x = 0
+//   y = 0
+//   abstract surface(): number
+// }
+// class Triangle extends Geometry {
+//   x = 0
+//   y = 0
+//   surface(): number {
+//       return 3
+//   }
+// }
+class Geometry {
+    // static{
+    //   Geometry.#origin = {x: 0, y: 0}
     // }
-    first() {
-        return this.items[0] || null;
-    }
-    isEqual(a) {
-        return a.items === this.items;
+    surface() {
+        return 3;
     }
 }
-const a = new Collection(["aze", 2]);
-//const c = a.add(3)
-const b = a.first;
-const c = new Collection([1, 2]);
-a.isEqual(c);
-
+_a = Geometry;
+_Geometry_origin = { value: { x: 0, y: 0 } };
+class Triangle {
+    constructor(x, y) {
+    }
+    surface() {
+        return 3;
+    }
+}
+function shapeGenerator(shapeType, x, y) {
+    return new shapeType(x, y).surface();
+}
+shapeGenerator(Geometry, 10, 20);
+shapeGenerator(Triangle, 10, 20);
