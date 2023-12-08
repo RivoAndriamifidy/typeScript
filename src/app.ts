@@ -138,34 +138,44 @@ const abb = consoleSize(["3", 2]);
 // }
 
 class Geometry {
-  static #origin: {x: number, y: number} = {x: 0, y: 0}
+  static #origin: { x: number; y: number } = { x: 0, y: 0 };
   // static{
   //   Geometry.#origin = {x: 0, y: 0}
   // }
 
-  surface () {
-    return 3
+  surface() {
+    return 3;
   }
 }
 
 class Triangle {
-  constructor(x: number, y:number) {
-    
-  }
-  surface (){
-    return 3
+  constructor(x: number, y: number) {}
+  surface() {
+    return 3;
   }
 }
 
 type InstantiableShape = {
   new (x: number, y: number): {
-    surface: () => number
-  }
+    surface: () => number;
+  };
+};
+
+function shapeGenerator(shapeType: InstantiableShape, x: number, y: number) {
+  return new shapeType(x, y).surface();
 }
 
-function shapeGenerator(shapeType:InstantiableShape, x:number, y:number) {
-  return  new shapeType(x,y).surface()
-}
+shapeGenerator(Geometry, 10, 20);
+shapeGenerator(Triangle, 10, 20);
 
-shapeGenerator(Geometry, 10,20)
-shapeGenerator(Triangle, 10,20)
+type listItem = [string, number];
+const a: listItem = ["Tomate", 2];
+const b: listItem = ["Banane", 3];
+
+function merge<T extends unknown[], U extends unknown[]>(
+  a: T,
+  b: U
+): [...T, ...U] {
+  return [...a, ...b];
+}
+const c = merge(a, b);
