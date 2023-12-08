@@ -179,3 +179,8 @@ function merge<T extends unknown[], U extends unknown[]>(
   return [...a, ...b];
 }
 const c = merge(a, b);
+
+const d = [] as string[]
+if (c[0]) {
+  console.log(c[0].toUpperCase())
+}
