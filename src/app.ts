@@ -46,11 +46,11 @@ function identity<ArgType>(arg: ArgType): ArgType {
 
 const aa = identity(3);
 
-function first<Type>(arg: Type[]): Type {
-  return arg[0];
-}
+// function first<Type>(arg: Type[]): Type {
+//   return arg[0];
+// }
 
-const aaa = first(["aze", "bze", "cze"]);
+// const aaa = first(["aze", "bze", "cze"]);
 
 function consoleSize<Type extends { length: number }>(arg: Type): Type {
   console.log(arg.length);
@@ -184,3 +184,12 @@ const d = [] as string[]
 if (c[0]) {
   console.log(c[0].toUpperCase())
 }
+
+enum STEPS {
+  Intro ,
+  Selection ,
+  Panier ,
+  Paiement 
+}
+const steps: STEPS = STEPS.Selection
+console.log(STEPS[steps])

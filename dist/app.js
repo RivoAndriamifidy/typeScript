@@ -38,10 +38,10 @@ function identity(arg) {
     return arg;
 }
 const aa = identity(3);
-function first(arg) {
-    return arg[0];
-}
-const aaa = first(["aze", "bze", "cze"]);
+// function first<Type>(arg: Type[]): Type {
+//   return arg[0];
+// }
+// const aaa = first(["aze", "bze", "cze"]);
 function consoleSize(arg) {
     console.log(arg.length);
     return arg;
@@ -127,8 +127,7 @@ class Geometry {
 _a = Geometry;
 _Geometry_origin = { value: { x: 0, y: 0 } };
 class Triangle {
-    constructor(x, y) {
-    }
+    constructor(x, y) { }
     surface() {
         return 3;
     }
@@ -138,3 +137,22 @@ function shapeGenerator(shapeType, x, y) {
 }
 shapeGenerator(Geometry, 10, 20);
 shapeGenerator(Triangle, 10, 20);
+const a = ["Tomate", 2];
+const b = ["Banane", 3];
+function merge(a, b) {
+    return [...a, ...b];
+}
+const c = merge(a, b);
+const d = [];
+if (c[0]) {
+    console.log(c[0].toUpperCase());
+}
+var STEPS;
+(function (STEPS) {
+    STEPS[STEPS["Intro"] = 0] = "Intro";
+    STEPS[STEPS["Selection"] = 1] = "Selection";
+    STEPS[STEPS["Panier"] = 2] = "Panier";
+    STEPS[STEPS["Paiement"] = 3] = "Paiement";
+})(STEPS || (STEPS = {}));
+const steps = STEPS.Selection;
+console.log(STEPS[steps]);
