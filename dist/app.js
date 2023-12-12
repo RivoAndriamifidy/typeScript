@@ -175,3 +175,29 @@ scrollTo(500, 1200, {
     ease: 'out-bounce',
     duration: 1500
 });
+class Poisson {
+    cri() {
+        return false;
+    }
+}
+class Chat {
+    cri() {
+        return 'miaou';
+    }
+}
+class FeatureFlags {
+    constructor() {
+        this.env = 'hello';
+    }
+    darkMode() { return true; }
+    privateMode() { return true; }
+    nsfwMode() { return true; }
+}
+function demo() {
+}
+const colors = {
+    blue: [0, 0, 225],
+    red: '#FF0000',
+    green: [0, 225, 0]
+};
+colors.green.map(v => v / 2);

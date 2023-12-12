@@ -218,3 +218,69 @@ scrollTo(500, 1200, {
   ease: 'out-bounce',
   duration: 1500
 });
+
+
+class Poisson {
+  cri(){
+    return false
+  }
+}
+
+class Chat{
+  cri(){
+    return 'miaou'
+  }
+
+}
+
+type AnimalCri<T> = T extends {cri: () => infer U } ? U : never
+
+type A = AnimalCri <Chat>
+type B = AnimalCri <Poisson>
+
+// type AnimalOptions = {nager:any} | {sauter:any}
+// type AnimalFromOption<T> = T extends {nager:any} ? Poisson : Chat
+
+// function generator<T extends AnimalOptions>(options: T): AnimalFromOption<T>{
+//   if ("nager" in options) {
+//     return new Poisson()
+//   } else {
+//     return new Chat()
+//   }  
+// }
+
+// const a1 = generator({nager: 'aze'})
+import type {PickByValue} from "utility-types"
+
+class FeatureFlags {
+  env = 'hello'
+  darkMode () {return true}
+  privateMode () {return true}
+  nsfwMode () {return true}
+}
+
+type OptionFlags<T> = {
+  //[key in keyof T]: boolean
+  // +readonly[key in keyof T as `get${string & key}`]: T[key] extends () => boolean ? boolean : never
+  //[key in keyof T]+?: boolean//optionnelle
+  // +readonly[key in keyof T as T[key] extends () => any ? `is${Capitalize<key & string>}` : never]:
+  // T[key] extends () => any ? ReturnType<T[key]> : never
+  +readonly[key in keyof PickByValue <T, () =>any > as `is${Capitalize<key & string>}`]:
+  T[key] extends () => any ? ReturnType<T[key]> : never
+}
+
+type A2 = OptionFlags<FeatureFlags>
+
+type Colors = Record<string, [number, number, number] | string>
+
+function demo() {
+  
+}
+
+const colors = {
+  blue: [0 , 0 , 225],
+  red: '#FF0000',
+  green: [ 0 , 225 , 0]
+}satisfies Colors
+
+colors.green.map(v=>v/2)
