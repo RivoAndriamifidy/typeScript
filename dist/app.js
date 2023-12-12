@@ -1,4 +1,3 @@
-"use strict";
 var _a, _Geometry_origin;
 const compteur = document.querySelector("#compteur");
 let i = 0;
@@ -156,3 +155,23 @@ var STEPS;
 })(STEPS || (STEPS = {}));
 const steps = STEPS.Selection;
 console.log(STEPS[steps]);
+export class Point {
+    constructor() {
+        this.x = 0;
+        this.y = 0;
+    }
+    move(x, y) {
+        this.x,
+            this.y;
+        return this;
+    }
+}
+window.ga('send', {
+    hitType: 'event',
+    eventCategory: 'category'
+});
+import scrollTo from 'scroll-to';
+scrollTo(500, 1200, {
+    ease: 'out-bounce',
+    duration: 1500
+});
